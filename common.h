@@ -18,5 +18,6 @@ typedef struct
 } Course;
 
 extern Course coursesForSem1[MAX_COURSES];
-
+int loadSemester1Courses();
+void displayCourses();
 #endif
