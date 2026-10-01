@@ -1,0 +1,10 @@
+OS201|Operating Systems|3|40|1|0|1|0|1|08|00|09|30
+OS202|Operating Systems Lab|1|30|0|1|0|0|0|11|00|13|00
+CN201|Computer Networks|3|40|0|1|0|1|0|09|00|10|30
+CN202|Computer Networks Lab|1|30|0|0|1|0|0|14|00|16|00
+SAD201|Software Design and Architecture|3|40|1|0|1|0|1|10|30|12|00
+WEB201|Web Engineering|3|40|0|1|0|1|0|12|00|13|30
+WEB202|Web Engineering Lab|1|30|0|0|1|0|0|11|00|13|00
+TOC201|Theory of Automata and Formal Languages|3|40|1|0|1|0|1|13|00|14|30
+LA201|Linear Algebra|3|40|0|1|0|1|0|14|00|15|30
+HCI201|Human Computer Interaction|3|40|1|0|1|0|1|15|00|16|30
