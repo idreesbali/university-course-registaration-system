@@ -1,0 +1,10 @@
+OOP102|Object Oriented Programming|3|40|1|0|1|0|1|08|00|09|30
+OOP103|Object Oriented Programming Lab|1|30|0|1|0|0|0|11|00|13|00
+DS102|Data Structures|3|40|0|1|0|1|0|09|00|10|30
+CAL102|Multivariable Calculus|3|40|1|0|1|0|1|10|30|12|00
+STA101|Probability and Statistics|3|40|0|1|0|1|0|12|00|13|30
+ENG103|Communication Skills|3|40|1|0|1|0|1|13|00|14|30
+PAK102|Pakistan Studies|2|45|0|1|0|1|0|14|00|15|00
+ISL102|Islamic Studies II|2|45|1|0|1|0|0|15|00|16|00
+ICT102|Digital Logic Design|3|40|0|1|0|1|0|10|30|12|00
+DLD102|Digital Logic Design Lab|1|30|0|0|1|0|0|14|00|16|00
