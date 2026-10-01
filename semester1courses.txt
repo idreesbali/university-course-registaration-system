@@ -1,10 +1,10 @@
-ANT101|Anthropology|3|40|1|0|1|0|0|0|0|09|00|10|30
-PHY101|Applied Physics|3|40|0|1|0|1|0|0|0|11|00|12|30
-PF101|Programming Fundamentals|3|40|1|0|1|0|1|0|0|08|00|09|30
-ISL101|Islamic Studies|2|45|0|1|0|1|0|0|0|13|00|14|00
-SIR101|Seerah|2|45|1|0|1|0|0|0|0|10|30|11|30
-ENG101|Functional English Theory|3|40|0|1|0|1|0|0|0|09|00|10|30
-ENG102|Functional English Lab|1|30|0|0|0|0|1|0|0|11|00|12|00
-CAL101|Calculus and Analytical Geometry|3|40|1|0|1|0|1|0|0|12|00|13|30
-ICT101|Information and Communication Technology|3|40|0|1|0|1|0|0|0|14|00|15|30
-ICP101|Ideology and Constitution of Pakistan|2|45|1|0|1|0|0|0|0|13|30|14|30
+ANT101|Anthropology|3|40|1|0|1|0|0|09|00|10|30
+PHY101|Applied Physics|3|40|0|1|0|1|0|11|00|12|30
+PF101|Programming Fundamentals|3|40|1|0|1|0|1|08|00|09|30
+ISL101|Islamic Studies|2|45|0|1|0|1|0|13|00|14|00
+SIR101|Seerah|2|45|1|0|1|0|0|10|30|11|30
+ENG101|Functional English Theory|3|40|0|1|0|1|0|09|00|10|30
+ENG102|Functional English Lab|1|30|0|0|0|0|1|11|00|12|00
+CAL101|Calculus and Analytical Geometry|3|40|1|0|1|0|1|12|00|13|30
+ICT101|Information and Communication Technology|3|40|0|1|0|1|0|14|00|15|30
+ICP101|Ideology and Constitution of Pakistan|2|45|1|0|1|0|0|13|30|14|30
