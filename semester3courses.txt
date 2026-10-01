@@ -1,0 +1,10 @@
+DS201|Data Structures and Algorithms|3|40|1|0|1|0|1|08|00|09|30
+DS202|Data Structures and Algorithms Lab|1|30|0|1|0|0|0|11|00|13|00
+DB201|Database Systems|3|40|0|1|0|1|0|09|00|10|30
+DB202|Database Systems Lab|1|30|0|0|1|0|0|14|00|16|00
+CO201|Computer Organization and Assembly Language|3|40|1|0|1|0|1|10|30|12|00
+CO202|Computer Organization Lab|1|30|0|1|0|0|0|14|00|16|00
+CAL201|Differential Equations|3|40|0|1|0|1|0|12|00|13|30
+SE201|Software Engineering|3|40|1|0|1|0|1|13|00|14|30
+AI201|Artificial Intelligence Fundamentals|3|40|0|1|0|1|0|15|00|16|30
+ENG201|Technical and Business Writing|3|40|1|0|1|0|1|09|00|10|30
