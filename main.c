@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "common.h"
-int main() {
+int main()
+{
     int choice;
     printf("NAME: ");
     char name[50];
@@ -11,10 +12,13 @@ int main() {
     printf("Semester: ");
     int sem;
     scanf("%d", &sem);
-    switch(sem) {
-        case 1:
-           loadSemester1Courses(); 
-           displayCourses();
+    switch (sem)
+    {
+    case 1:
+        loadCourses("semester1courses.txt", coursesForSem1);
+        displayCourses(coursesForSem1);
         break;
     }
+
+    return 0;
 }
