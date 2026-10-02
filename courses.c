@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "common.h"
-Course courses[MAX_COURSES];
+Course coursesForSem1[MAX_COURSES];
 Course coursesForSem2[MAX_COURSES];
 Course coursesForSem3[MAX_COURSES];
 Course coursesForSem4[MAX_COURSES];
@@ -14,6 +14,7 @@ int courseCount = 0;
 int loadCourses(const char *fileName, Course courses[])
 {
     FILE *file;
+    courseCount = 0;
 
     file = fopen(fileName, "r");
 
@@ -23,11 +24,9 @@ int loadCourses(const char *fileName, Course courses[])
         return 0;
     }
 
-    int courseCount = 0;
-
     while (courseCount < MAX_COURSES &&
            fscanf(file,
-                  "%9[^|]|%59[^|]|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d\n",
+                  "%9[^|]|%59[^|]|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d\n",
                   courses[courseCount].course_code,
                   courses[courseCount].course_title,
                   &courses[courseCount].credit_hours,
@@ -60,12 +59,12 @@ void displayCourses(Course courses[])
         printf("Course Title: %s\n", courses[i].course_title);
         printf("Credit Hours: %d\n", courses[i].credit_hours);
         printf("Available Seats: %d\n", courses[i].available_seats);
-        printf("\nDays             : ");
+        printf("Days: ");
         printf("%s", courses[i].days[0] ? "Mon " : "");
         printf("%s", courses[i].days[1] ? "Tue " : "");
         printf("%s", courses[i].days[2] ? "Wed " : "");
         printf("%s", courses[i].days[3] ? "Thu " : "");
         printf("%s", courses[i].days[4] ? "Fri " : "");
-        printf("Start Time: %d:%d\nEnd Time: %d:%d", courses[i].start_hour, courses[i].start_minute, courses[i].end_hour, courses[i].end_minute);
+        printf("\nStart Time: %d:%d\nEnd Time: %d:%d", courses[i].start_hour, courses[i].start_minute, courses[i].end_hour, courses[i].end_minute);
     }
 }

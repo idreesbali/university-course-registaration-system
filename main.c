@@ -11,7 +11,7 @@ int main()
     scanf("%s", id);
     printf("Semester: ");
     int sem;
-    scanf("%d", &sem);
+    scanf(" %d", &sem);
     switch (sem)
     {
     case 1:
