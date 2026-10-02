@@ -18,6 +18,18 @@ int main()
         loadCourses("semester1courses.txt", coursesForSem1);
         displayCourses(coursesForSem1);
         break;
+    case 2:
+        loadCourses("semester2courses.txt", coursesForSem2);
+        displayCourses(coursesForSem2);
+        break;
+    case 3:
+        loadCourses("semester3courses.txt", coursesForSem3);
+        displayCourses(coursesForSem3);
+        break;
+    case 4:
+        loadCourses("semester4courses.txt", coursesForSem4);
+        displayCourses(coursesForSem4);
+        break;
     }
 
     return 0;
