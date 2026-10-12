@@ -86,6 +86,9 @@ int main()
     else
     {
         printf("Welcome back %s!\n", name);
+        char filename[100];
+        sprintf(filename, "%s_%s.txt", name, id);
+        readRegistered(filename);
     }
     /*switch (sem)
     {
