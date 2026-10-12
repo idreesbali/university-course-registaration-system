@@ -24,4 +24,5 @@ extern Course coursesForSem4[MAX_COURSES];
 int loadCourses(const char *filename, Course courses[]);
 void displayCourses(Course courses[]);
 void readRegistered(char filename[]);
+int FileExist(char text[], char id[]);
 #endif

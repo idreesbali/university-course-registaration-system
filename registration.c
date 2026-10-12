@@ -1,4 +1,19 @@
 #include <stdio.h>
+int FileExist(char text[], char id[])
+{
+    char filename[100];
+    sprintf(filename, "%s_%s.txt", text, id);
+    FILE *file = fopen(filename, "r");
+    if (file == NULL)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+    fclose(file);
+}
 void readRegistered(char filename[])
 {
     int courseCount = 0;
