@@ -24,11 +24,12 @@ void Readtext(char text[], int size)
         text[strcspn(text, "\n")] = '\0';
     }
 }
-void filename(char name[], char id[])
+void filename(char name[], char id[], int sem)
 {
     char filename[100];
     sprintf(filename, "%s_%s.txt", name, id);
     FILE *file = fopen(filename, "w");
+    fprintf(file, "%s|%s|%d", name, id, sem);
 
     fclose(file);
 }
@@ -80,7 +81,7 @@ int main()
     if (returnFile == 1)
     {
         printf("Welcome %s! A new file has been created for you!\n", name);
-        filename(name, id);
+        filename(name, id, sem);
     }
     else
     {
