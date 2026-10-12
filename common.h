@@ -23,6 +23,8 @@ extern Course coursesForSem3[MAX_COURSES];
 extern Course coursesForSem4[MAX_COURSES];
 int loadCourses(const char *filename, Course courses[]);
 void displayCourses(Course courses[]);
-void readRegistered(char filename[]);
-int FileExist(char text[], char id[]);
+int stdFileExists(const char fileName[]);
+void createStudentFile(const char std_fileName[],char name[], char id[], int sem);
+void readRegisteredCourses(const char fileName[]);
+
 #endif

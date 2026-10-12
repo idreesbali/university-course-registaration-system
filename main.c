@@ -2,6 +2,7 @@
 #include "common.h"
 #include <string.h>
 #include <ctype.h>
+
 void Readtext(char text[], int size)
 {
     if (fgets(text, size, stdin) != NULL)
@@ -9,15 +10,7 @@ void Readtext(char text[], int size)
         text[strcspn(text, "\n")] = '\0';
     }
 }
-void filename(char name[], char id[], int sem)
-{
-    char filename[100];
-    sprintf(filename, "%s_%s.txt", name, id);
-    FILE *file = fopen(filename, "w");
-    fprintf(file, "%s|%s|%d", name, id, sem);
 
-    fclose(file);
-}
 int upperCase(char text[])
 {
     for (int i = 0; text[i] != '\0'; i++)
@@ -25,6 +18,7 @@ int upperCase(char text[])
         text[i] = toupper(text[i]);
     }
 }
+
 int isValid(char text[])
 {
     if (text[0] == '\n')
@@ -40,6 +34,7 @@ int isValid(char text[])
     }
     return 1;
 }
+
 int main()
 {
     int choice;
@@ -62,18 +57,20 @@ int main()
     printf("Semester(1-4): ");
     int sem;
     scanf(" %d", &sem);
-    int returnFile = FileExist(name, id);
-    if (returnFile == 1)
+
+    char std_fileName[60];
+    sprintf(std_fileName, "%s_%s.txt", name,id);
+
+    int returnFile = stdFileExists(std_fileName);
+    if (returnFile == 0)
     {
         printf("Welcome %s! A new file has been created for you!\n", name);
-        filename(name, id, sem);
+        createStudentFile(std_fileName,name, id, sem);
     }
     else
     {
         printf("Welcome back %s!\n", name);
-        char filename[100];
-        sprintf(filename, "%s_%s.txt", name, id);
-        readRegistered(filename);
+        readRegisteredCourses(std_fileName);
     }
     /*switch (sem)
     {
