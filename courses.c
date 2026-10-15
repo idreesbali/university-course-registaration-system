@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<string.h>
 #include "common.h"
 Course coursesForSem1[MAX_COURSES];
 Course coursesForSem2[MAX_COURSES];
@@ -49,22 +50,36 @@ int loadCourses(const char *fileName, Course courses[])
     return courseCount;
 }
 
+
 void displayCourses(Course courses[])
 {
+    printf("\n");
+    printf("+------+----------+----------------------------------+--------+-------+----------------+-------------+\n");
+    printf("| No.  | Code     | Course Title                     | Credit | Seats | Days           | Time        |\n");
+    printf("+------+----------+----------------------------------+--------+-------+----------------+-------------+\n");
+
     for (int i = 0; i < courseCount; i++)
     {
-        printf("\n");
-        printf("\nCourse %d:", i + 1);
-        printf("\nCourse Code: %s\n", courses[i].course_code);
-        printf("Course Title: %s\n", courses[i].course_title);
-        printf("Credit Hours: %d\n", courses[i].credit_hours);
-        printf("Available Seats: %d\n", courses[i].available_seats);
-        printf("Days: ");
-        printf("%s", courses[i].days[0] ? "Mon " : "");
-        printf("%s", courses[i].days[1] ? "Tue " : "");
-        printf("%s", courses[i].days[2] ? "Wed " : "");
-        printf("%s", courses[i].days[3] ? "Thu " : "");
-        printf("%s", courses[i].days[4] ? "Fri " : "");
-        printf("\nStart Time: %d:%d\nEnd Time: %d:%d", courses[i].start_hour, courses[i].start_minute, courses[i].end_hour, courses[i].end_minute);
+        char days[20] = "";
+
+        if (courses[i].days[0]) strcat(days, "Mon ");
+        if (courses[i].days[1]) strcat(days, "Tue ");
+        if (courses[i].days[2]) strcat(days, "Wed ");
+        if (courses[i].days[3]) strcat(days, "Thu ");
+        if (courses[i].days[4]) strcat(days, "Fri ");
+
+        printf("| %-4d | %-8s | %-32.32s | %-6d | %-5d | %-14s | %02d:%02d-%02d:%02d |\n",
+               i + 1,
+               courses[i].course_code,
+               courses[i].course_title,
+               courses[i].credit_hours,
+               courses[i].available_seats,
+               days,
+               courses[i].start_hour,
+               courses[i].start_minute,
+               courses[i].end_hour,
+               courses[i].end_minute);
+
+        printf("+------+----------+----------------------------------+--------+-------+----------------+-------------+\n");
     }
 }

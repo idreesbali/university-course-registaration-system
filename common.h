@@ -26,5 +26,6 @@ void displayCourses(Course courses[]);
 int stdFileExists(const char fileName[]);
 void createStudentFile(const char std_fileName[],char name[], char id[], int sem);
 void readRegisteredCourses(const char fileName[]);
+void displaymenu();
 
 #endif
