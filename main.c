@@ -2,7 +2,6 @@
 #include "common.h"
 #include <string.h>
 #include <ctype.h>
-
 void Readtext(char text[], int size)
 {
     if (fgets(text, size, stdin) != NULL)
@@ -59,19 +58,27 @@ int main()
     scanf(" %d", &sem);
 
     char std_fileName[60];
-    sprintf(std_fileName, "%s_%s.txt", name,id);
+    sprintf(std_fileName, "%s_%s.txt", name, id);
 
     int returnFile = stdFileExists(std_fileName);
     if (returnFile == 0)
     {
         printf("Welcome %s! A new file has been created for you!\n", name);
-        createStudentFile(std_fileName,name, id, sem);
+        createStudentFile(std_fileName, name, id, sem);
     }
     else
     {
         printf("Welcome back %s!\n", name);
         readRegisteredCourses(std_fileName);
     }
+
+    // display menu
+    // input user(1.display courses/2. register course /3. view timwetable/ 4. exit)
+    // switch case for display courses
+    // display menu again
+    // register courses store it in array
+    // timeta
+
     /*switch (sem)
     {
     case 1:
