@@ -5,13 +5,22 @@ Course coursesForSem1[MAX_COURSES];
 Course coursesForSem2[MAX_COURSES];
 Course coursesForSem3[MAX_COURSES];
 Course coursesForSem4[MAX_COURSES];
+Course coursesForSem5[MAX_COURSES];
+Course coursesForSem6[MAX_COURSES];
+Course coursesForSem7[MAX_COURSES];
+Course coursesForSem8[MAX_COURSES];
 
 int courseCountSem1 = 0;
 int courseCountSem2 = 0;
 int courseCountSem3 = 0;
 int courseCountSem4 = 0;
-
+int courseCountSem5 = 0;
+int courseCountSem6 = 0;
+int courseCountSem7 = 0;
+int courseCountSem8 = 0;
 int courseCount = 0;
+
+const char dayNames[5][4] = {"Mon", "Tue", "Wed", "Thu", "Fri"};
 int loadCourses(const char *fileName, Course courses[])
 {
     FILE *file;
@@ -40,8 +49,7 @@ int loadCourses(const char *fileName, Course courses[])
                   &courses[courseCount].start_hour,
                   &courses[courseCount].start_minute,
                   &courses[courseCount].end_hour,
-                  &courses[courseCount].end_minute) == 13)
-    {
+                  &courses[courseCount].end_minute) == 13) {
         courseCount++;
     }
 

@@ -3,6 +3,7 @@
 #include "common.h"
 
 Course registeredCourses[MAX_REGISTERED_COURSES];
+int registerCourseCount = 0;
 
 int stdFileExists(const char fileName[]) {
     FILE *file = fopen(fileName, "r");
@@ -49,6 +50,7 @@ void readRegisteredCourses(const char fileName[]) {
             if (fscanf(file, "%9s", registeredCourses[i].course_code) == 1) {
             printf("Course CODE: %s\n",
                    registeredCourses[i].course_code);
+                   registerCourseCount++;
             }
         }
         fclose(file);

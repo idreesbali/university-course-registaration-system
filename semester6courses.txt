@@ -1,0 +1,10 @@
+CS601|Machine Learning Fundamentals|3|40|1|0|1|0|1|08|00|09|30
+CS602|Advanced Database Systems|3|35|0|1|0|1|0|08|30|10|00
+CS603|Software Project Management|3|40|1|0|1|0|1|09|00|10|30
+CS604|Network Security|3|30|0|1|0|1|0|10|00|11|30
+CS605|Data Science and Analytics|3|35|1|0|1|0|1|10|00|11|30
+CS606|Mobile Computing|3|40|0|1|0|1|0|11|00|12|30
+CS607|Computer Graphics|3|30|1|0|1|0|1|11|30|13|00
+CS608|Distributed Systems|3|35|0|1|0|1|0|13|00|14|30
+CS609|Natural Language Processing|3|40|1|0|1|0|1|13|00|14|30
+CS610|Internet of Things|3|30|0|1|0|1|0|14|00|15|30

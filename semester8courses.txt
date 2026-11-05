@@ -1,0 +1,10 @@
+CS801|Generative AI Applications|3|40|1|0|1|0|1|08|00|09|30
+CS802|Advanced Cyber Security|3|35|0|1|0|1|0|09|00|10|30
+CS803|Microservices Architecture|3|40|1|0|1|0|1|09|30|11|00
+CS804|Cloud Native Development|3|30|0|1|0|1|0|10|00|11|30
+CS805|MLOps Engineering|3|35|1|0|1|0|1|10|30|12|00
+CS806|Data Engineering|3|40|0|1|0|1|0|11|00|12|30
+CS807|Advanced Web Technologies|3|30|1|0|1|0|1|11|00|12|30
+CS808|System Design and Scalability|3|35|0|1|0|1|0|13|00|14|30
+CS809|AI Agents and Automation|3|40|1|0|1|0|1|13|00|14|30
+CS810|Final Year Project Seminar|1|30|0|1|0|1|0|14|00|15|00

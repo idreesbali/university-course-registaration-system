@@ -22,14 +22,25 @@ int upperCase(char text[])
 
 int isValid(char text[])
 {
-    if (text[0] == '\n')
-    {
-        return 1;
+    
+    if(strlen(text) != 8) {
+        printf("\nMust be 8 characters long\n");
+        
     }
-    for (int i = 0; text[i] != '\0'; i++)
-    {
-        if (!isdigit(text[i]) && text[i] != '-' && !isalpha(text[i]))
-        {
+
+    if(text[0] != '2' || (text[1] < '3' || text[1] > '6')) {
+        printf("\nWrong batch year entered\n");
+        return 0;
+    }
+
+    if(text[2] != 'K' || text[3] != '-') {
+        printf("\nWrong format entered, must be in format like (2XK-XXXX)\n");
+        return 0;
+    }
+
+    for(int i = 4; i < 8; i++) {
+        if(!isdigit(text[i])) {
+            printf("\nLast 4 digits must be numbers");
             return 0;
         }
     }
@@ -60,23 +71,18 @@ int main()
         printf("STUDENT ID: ");
         Readtext(id, sizeof(id));
         upperCase(id);
-        isValid(id);
-        if (isValid(id) == 0)
-        {
-            printf("Invalid ID. Please Enter Again\n");
-        }
     } while (isValid(id) == 0);
 
     int sem;
 
     do {
-        printf("Semester(1-4): ");
+        printf("Semester(1-8): ");
         scanf(" %d", &sem);
 
-        if(sem<=0 || sem > 4) {
+        if(sem<=0 || sem > 8) {
             printf("\nInvalid Semester Input[!], Enter Again Correct Semester Number: ");
         }
-    } while(sem<=0 || sem > 4);
+    } while(sem<=0 || sem > 8);
 
     char std_fileName[60];
     sprintf(std_fileName, "%s_%s.txt", name, id);
@@ -108,8 +114,7 @@ int main()
         switch (choice)
         {
         case 1:
-            switch (sem)
-            {
+            switch (sem) {
             case 1:
                 loadCourses("semester1courses.txt", coursesForSem1);
                 displayCourses(coursesForSem1);
@@ -125,15 +130,32 @@ int main()
             case 4:
                 loadCourses("semester4courses.txt", coursesForSem4);
                 displayCourses(coursesForSem4);
+                break;
+            case 5:
+                loadCourses("semester5courses.txt", coursesForSem5);
+                displayCourses(coursesForSem5);
+                break;
+            case 6:
+                loadCourses("semester6courses.txt", coursesForSem6);
+                displayCourses(coursesForSem6);
+                break;
+            case 7:
+                loadCourses("semester7courses.txt", coursesForSem7);
+                displayCourses(coursesForSem7);
+                break;
+            case 8:
+                loadCourses("semester8courses.txt", coursesForSem8);
+                displayCourses(coursesForSem8);
+                break;
             }
         break;
         case 2:
-            printf("\nWILL BE IMPLEMENTED");
+            printf("\nRegistration WILL BE IMPLEMENTED");
             break;
     
-        case 3: 
-            printf("\nWILL BE IMPLEMENTED");
-            break;
+       case 3:
+            displayTimetable(std_fileName, sem);
+        break;
 
         case 4:
             printf("\nExiting The program");

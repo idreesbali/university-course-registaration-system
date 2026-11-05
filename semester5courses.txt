@@ -1,0 +1,10 @@
+CS501|Backend Web Development|3|40|1|0|1|0|1|08|00|09|30
+CS502|Database Administration|3|35|0|1|0|1|0|09|00|10|30
+CS503|Mobile Application Development|3|40|1|0|1|0|1|09|00|10|30
+CS504|Cloud Infrastructure|3|30|0|1|0|1|0|10|00|11|30
+CS505|Cyber Security Fundamentals|3|35|1|0|1|0|1|10|00|11|30
+CS506|Software Testing and Quality Assurance|3|40|0|1|0|1|0|11|00|12|30
+CS507|Advanced C Programming|3|30|1|0|1|0|1|11|00|12|30
+CS508|DevOps Engineering|3|35|0|1|0|1|0|13|00|14|30
+CS509|Human Computer Interaction|3|40|1|0|1|0|1|13|00|14|30
+CS510|Artificial Intelligence Applications|3|30|0|1|0|1|0|14|00|15|30
