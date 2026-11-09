@@ -26,16 +26,18 @@ extern Course coursesForSem6[MAX_COURSES];
 extern Course coursesForSem7[MAX_COURSES];
 extern Course coursesForSem8[MAX_COURSES];
 extern Course registeredCourses[MAX_REGISTERED_COURSES];
-
+int isAlreadyRegistered(const char code[]);
+int registerCourse(Course semesterCourses[], int count, const char code[], const char std_fileName[]);
 extern int registerCourseCount;
 extern const char dayNames[5][4];
 
 int loadCourses(const char *filename, Course courses[]);
 void displayCourses(Course courses[]);
 int stdFileExists(const char fileName[]);
-void createStudentFile(const char std_fileName[],char name[], char id[], int sem);
+void createStudentFile(const char std_fileName[], char name[], char id[], int sem);
 void readRegisteredCourses(const char fileName[]);
 void displaymenu();
 void displayTimetable(const char fileName[], int sem);
+int findCourse(Course courses[], int count, const char code[]);
 
 #endif

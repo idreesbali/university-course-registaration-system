@@ -2,7 +2,7 @@
 #include "common.h"
 #include <string.h>
 #include <ctype.h>
-#include<stdlib.h>
+#include <stdlib.h>
 
 void Readtext(char text[], int size)
 {
@@ -22,24 +22,28 @@ int upperCase(char text[])
 
 int isValid(char text[])
 {
-    
-    if(strlen(text) != 8) {
+
+    if (strlen(text) != 8)
+    {
         printf("\nMust be 8 characters long\n");
-        
     }
 
-    if(text[0] != '2' || (text[1] < '3' || text[1] > '6')) {
+    if (text[0] != '2' || (text[1] < '3' || text[1] > '6'))
+    {
         printf("\nWrong batch year entered\n");
         return 0;
     }
 
-    if(text[2] != 'K' || text[3] != '-') {
+    if (text[2] != 'K' || text[3] != '-')
+    {
         printf("\nWrong format entered, must be in format like (2XK-XXXX)\n");
         return 0;
     }
 
-    for(int i = 4; i < 8; i++) {
-        if(!isdigit(text[i])) {
+    for (int i = 4; i < 8; i++)
+    {
+        if (!isdigit(text[i]))
+        {
             printf("\nLast 4 digits must be numbers");
             return 0;
         }
@@ -47,7 +51,8 @@ int isValid(char text[])
     return 1;
 }
 
-void displaymenu(){
+void displaymenu()
+{
     printf("\n#####################################################");
     printf("\n\tCOURSE REGISTRATION AND TIMETABLE MENU");
     printf("\n#####################################################");
@@ -60,7 +65,7 @@ void displaymenu(){
 
 int main()
 {
-
+    char code[10];
     printf("NAME: ");
     char name[50];
     Readtext(name, sizeof(name));
@@ -75,14 +80,16 @@ int main()
 
     int sem;
 
-    do {
+    do
+    {
         printf("Semester(1-8): ");
         scanf(" %d", &sem);
 
-        if(sem<=0 || sem > 8) {
+        if (sem <= 0 || sem > 8)
+        {
             printf("\nInvalid Semester Input[!], Enter Again Correct Semester Number: ");
         }
-    } while(sem<=0 || sem > 8);
+    } while (sem <= 0 || sem > 8);
 
     char std_fileName[60];
     sprintf(std_fileName, "%s_%s.txt", name, id);
@@ -98,64 +105,56 @@ int main()
         printf("Welcome back %s!\n", name);
         readRegisteredCourses(std_fileName);
     }
+    Course semesterCourses[MAX_COURSES];
+    char courseFile[30];
+    sprintf(courseFile, "semester%dcourses.txt", sem);
+    int semesterCount = loadCourses(courseFile, semesterCourses);
+    while (1)
+    {
 
-    while(1) {
-     
         int choice;
-        do {
+        do
+        {
             displaymenu();
             printf("\nEnter Choice : ");
             scanf("%d", &choice);
-            if(choice<=0 || choice>4) {
+            if (choice <= 0 || choice > 4)
+            {
                 printf("\nInvalid Input[!]. Please Enter Again Correct Choice : ");
             }
-        } while(choice<=0 || choice>4);
+        } while (choice <= 0 || choice > 4);
 
         switch (choice)
         {
         case 1:
-            switch (sem) {
-            case 1:
-                loadCourses("semester1courses.txt", coursesForSem1);
-                displayCourses(coursesForSem1);
-                break;
-            case 2:
-                loadCourses("semester2courses.txt", coursesForSem2);
-                displayCourses(coursesForSem2);
-                break;
-            case 3:
-                loadCourses("semester3courses.txt", coursesForSem3);
-                displayCourses(coursesForSem3);
-                break;
-            case 4:
-                loadCourses("semester4courses.txt", coursesForSem4);
-                displayCourses(coursesForSem4);
-                break;
-            case 5:
-                loadCourses("semester5courses.txt", coursesForSem5);
-                displayCourses(coursesForSem5);
-                break;
-            case 6:
-                loadCourses("semester6courses.txt", coursesForSem6);
-                displayCourses(coursesForSem6);
-                break;
-            case 7:
-                loadCourses("semester7courses.txt", coursesForSem7);
-                displayCourses(coursesForSem7);
-                break;
-            case 8:
-                loadCourses("semester8courses.txt", coursesForSem8);
-                displayCourses(coursesForSem8);
-                break;
-            }
-        break;
-        case 2:
-            printf("\nRegistration WILL BE IMPLEMENTED");
+            displayCourses(semesterCourses);
             break;
-    
-       case 3:
+        case 2:
+            if (registerCourseCount == MAX_REGISTERED_COURSES)
+            {
+                printf("You have already registered for 5 courses.\n");
+            }
+            else
+            {
+
+                while (registerCourseCount < MAX_REGISTERED_COURSES)
+                {
+                    displayCourses(semesterCourses);
+                    printf("\nEnter Course code(0 to exit): ");
+                    scanf(" %9s", code);
+                    if (strcmp(code, "0") == 0)
+                    {
+                        break;
+                    }
+                    upperCase(code);
+                    registerCourse(semesterCourses, semesterCount, code, std_fileName);
+                }
+            }
+            break;
+
+        case 3:
             displayTimetable(std_fileName, sem);
-        break;
+            break;
 
         case 4:
             printf("\nExiting The program");
@@ -164,7 +163,7 @@ int main()
         default:
             printf("\nInvalid Choice[!]");
             break;
-        }   
+        }
     }
     // display menu
     // input user(1.display courses/2. register course /3. view timwetable/ 4. exit)

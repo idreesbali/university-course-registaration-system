@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include<string.h>
+#include <string.h>
 #include "common.h"
 Course coursesForSem1[MAX_COURSES];
 Course coursesForSem2[MAX_COURSES];
@@ -49,7 +49,8 @@ int loadCourses(const char *fileName, Course courses[])
                   &courses[courseCount].start_hour,
                   &courses[courseCount].start_minute,
                   &courses[courseCount].end_hour,
-                  &courses[courseCount].end_minute) == 13) {
+                  &courses[courseCount].end_minute) == 13)
+    {
         courseCount++;
     }
 
@@ -57,7 +58,6 @@ int loadCourses(const char *fileName, Course courses[])
 
     return courseCount;
 }
-
 
 void displayCourses(Course courses[])
 {
@@ -70,11 +70,16 @@ void displayCourses(Course courses[])
     {
         char days[20] = "";
 
-        if (courses[i].days[0]) strcat(days, "Mon ");
-        if (courses[i].days[1]) strcat(days, "Tue ");
-        if (courses[i].days[2]) strcat(days, "Wed ");
-        if (courses[i].days[3]) strcat(days, "Thu ");
-        if (courses[i].days[4]) strcat(days, "Fri ");
+        if (courses[i].days[0])
+            strcat(days, "Mon ");
+        if (courses[i].days[1])
+            strcat(days, "Tue ");
+        if (courses[i].days[2])
+            strcat(days, "Wed ");
+        if (courses[i].days[3])
+            strcat(days, "Thu ");
+        if (courses[i].days[4])
+            strcat(days, "Fri ");
 
         printf("| %-4d | %-8s | %-32.32s | %-6d | %-5d | %-14s | %02d:%02d-%02d:%02d |\n",
                i + 1,
@@ -90,4 +95,15 @@ void displayCourses(Course courses[])
 
         printf("+------+----------+----------------------------------+--------+-------+----------------+-------------+\n");
     }
+}
+int findCourse(Course courses[], int count, const char code[])
+{
+    for (int i = 0; i < count; i++)
+    {
+        if (strcmp(courses[i].course_code, code) == 0)
+        {
+            return i;
+        }
+    }
+    return -1;
 }
