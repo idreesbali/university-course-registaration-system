@@ -39,5 +39,6 @@ void readRegisteredCourses(const char fileName[]);
 void displaymenu();
 void displayTimetable(const char fileName[], int sem);
 int findCourse(Course courses[], int count, const char code[]);
+int dropCourse(Course semesterCourses[], int count, const char code[], const char std_fileName[]);
 
 #endif

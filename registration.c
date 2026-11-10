@@ -177,3 +177,56 @@ int registerCourse(Course semesterCourses[], int count, const char code[], const
     printf("Course registered successfully!\n");
     return 1;
 }
+int dropCourse(Course semesterCourses[], int count, const char code[], const char std_fileName[])
+{
+    int index = findCourse(registeredCourses, registerCourseCount, code);
+
+    if (index == -1)
+    {
+        printf("You have not registered %s.\n", code);
+        return 0;
+    }
+
+    // 1. Give the seat back (only in this session)
+    int semIndex = findCourse(semesterCourses, count, code);
+    if (semIndex != -1)
+    {
+        semesterCourses[semIndex].available_seats++;
+    }
+
+    // 2. Remove the course from the array by moving the others one place left
+    for (int i = index; i < registerCourseCount - 1; i++)
+    {
+        registeredCourses[i] = registeredCourses[i + 1];
+    }
+    registerCourseCount--;
+
+    // 3. Read the first line of the file (name|id|semester) so we can keep it
+    char header[100];
+    FILE *file = fopen(std_fileName, "r");
+    if (file == NULL)
+    {
+        printf("\nError opening your file\n");
+        return 0;
+    }
+    fgets(header, sizeof(header), file);
+    header[strcspn(header, "\r\n")] = '\0';
+    fclose(file);
+
+    // 4. Write the file again: first line, then the remaining courses
+    file = fopen(std_fileName, "w");
+    if (file == NULL)
+    {
+        printf("\nError saving file\n");
+        return 0;
+    }
+    fprintf(file, "%s", header);
+    for (int i = 0; i < registerCourseCount; i++)
+    {
+        fprintf(file, "\n%s", registeredCourses[i].course_code);
+    }
+    fclose(file);
+
+    printf("Course %s dropped successfully!\n", code);
+    return 1;
+}

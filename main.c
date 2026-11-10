@@ -13,7 +13,7 @@ void Readtext(char text[], int size)
     }
 }
 
-int upperCase(char text[])
+void upperCase(char text[])
 {
     for (int i = 0; text[i] != '\0'; i++)
     {
@@ -27,6 +27,7 @@ int isValid(char text[])
     if (strlen(text) != 8)
     {
         printf("\nMust be 8 characters long\n");
+        return 0;
     }
 
     if (text[0] != '2' || (text[1] < '3' || text[1] > '6'))
@@ -61,7 +62,8 @@ void displaymenu()
     printf("\n  [1] Display Available Courses");
     printf("\n  [2] Register a New Course");
     printf("\n  [3] View Personal Timetable");
-    printf("\n  [4] Exit Portal");
+    printf("\n  [4] Drop a Course");
+    printf("\n  [5] Exit Portal");
 
     printf("\n======================================================");
 }
@@ -156,11 +158,11 @@ int main()
             displaymenu();
             printf("\nEnter Choice : ");
             scanf("%d", &choice);
-            if (choice <= 0 || choice > 4)
+            if (choice <= 0 || choice > 5)
             {
                 printf("\nInvalid Input[!]. Please Enter Again Correct Choice : ");
             }
-        } while (choice <= 0 || choice > 4);
+        } while (choice <= 0 || choice > 5);
 
         switch (choice)
         {
@@ -195,6 +197,25 @@ int main()
             break;
 
         case 4:
+            if (registerCourseCount == 0)
+            {
+                printf("\nYou have no registered courses to drop.\n");
+            }
+            else
+            {
+                printf("\nYour registered courses:\n");
+                for (int i = 0; i < registerCourseCount; i++)
+                {
+                    printf("  %s - %s\n", registeredCourses[i].course_code, registeredCourses[i].course_title);
+                }
+
+                printf("\nEnter Course Code to drop: ");
+                scanf(" %9s", code);
+                upperCase(code);
+                dropCourse(semesterCourses, semesterCount, code, std_fileName);
+            }
+            break;
+        case 5:
             printf("\n\n======================================================");
             printf("\n             THANK YOU FOR USING OUR PORTAL");
             printf("\n======================================================");
