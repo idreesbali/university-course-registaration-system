@@ -109,6 +109,18 @@ int main()
     char courseFile[30];
     sprintf(courseFile, "semester%dcourses.txt", sem);
     int semesterCount = loadCourses(courseFile, semesterCourses);
+
+    // Fill in full details (days, times) for courses loaded from the file
+    for (int i = 0; i < registerCourseCount; i++)
+    {
+        int index = findCourse(semesterCourses, semesterCount, registeredCourses[i].course_code);
+
+        if (index != -1)
+        {
+            registeredCourses[i] = semesterCourses[index];
+        }
+    }
+
     while (1)
     {
 

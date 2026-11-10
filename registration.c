@@ -86,6 +86,56 @@ void saveRegisteredCourse(const char std_fileName[], const char code[])
     fprintf(file, "\n%s", code);
     fclose(file);
 }
+// Converts hours and minutes into total minutes (e.g. 9:30 -> 570)
+int toMinutes(int hour, int minute)
+{
+    return hour * 60 + minute;
+}
+
+// Returns 1 if the two courses clash, 0 if they don't
+int coursesClash(Course a, Course b)
+{
+    int shareDay = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        if (a.days[i] != 0 && b.days[i] != 0)
+        {
+            shareDay = 1;
+        }
+    }
+
+    if (shareDay == 0)
+    {
+        return 0; // no common day, so no clash
+    }
+
+    int startA = toMinutes(a.start_hour, a.start_minute);
+    int endA = toMinutes(a.end_hour, a.end_minute);
+    int startB = toMinutes(b.start_hour, b.start_minute);
+    int endB = toMinutes(b.end_hour, b.end_minute);
+
+    // They overlap if each one starts before the other ends
+    if (startA < endB && startB < endA)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+// Checks a new course against all registered courses.
+// Returns the index of the clashing course, or -1 if there is no clash
+int findClash(Course newCourse)
+{
+    for (int i = 0; i < registerCourseCount; i++)
+    {
+        if (coursesClash(newCourse, registeredCourses[i]) == 1)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
 
 int registerCourse(Course semesterCourses[], int count, const char code[], const char std_fileName[])
 {
@@ -109,7 +159,14 @@ int registerCourse(Course semesterCourses[], int count, const char code[], const
         return 0;
     }
 
-    // (clash check will go here later)
+    int clashIndex = findClash(semesterCourses[index]);
+
+    if (clashIndex != -1)
+    {
+        printf("Clash! %s overlaps with %s, which you already registered.\n",
+               code, registeredCourses[clashIndex].course_code);
+        return 0;
+    }
 
     registeredCourses[registerCourseCount] = semesterCourses[index];
     registerCourseCount++;
