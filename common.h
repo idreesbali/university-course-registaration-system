@@ -34,7 +34,7 @@ extern const char dayNames[5][4];
 int loadCourses(const char *filename, Course courses[]);
 void displayCourses(Course courses[]);
 int stdFileExists(const char fileName[]);
-void createStudentFile(const char std_fileName[], char name[], char id[]);
+void createStudentFile(const char std_fileName[], char name[], char id[], int sem);
 void readRegisteredCourses(const char fileName[]);
 void displaymenu();
 void displayTimetable(const char fileName[], int sem);

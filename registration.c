@@ -18,7 +18,7 @@ int stdFileExists(const char fileName[])
     return 1;
 }
 
-void createStudentFile(const char std_fileName[], char name[], char id[])
+void createStudentFile(const char std_fileName[], char name[], char id[], int sem)
 {
     FILE *file = fopen(std_fileName, "w");
 
@@ -28,7 +28,7 @@ void createStudentFile(const char std_fileName[], char name[], char id[])
         return;
     }
 
-    fprintf(file, "%s|%s|%d", name, id);
+    fprintf(file, "%s|%s|%d", name, id, sem);
     fclose(file);
 }
 

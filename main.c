@@ -2,7 +2,7 @@
 #include "common.h"
 #include <string.h>
 #include <ctype.h>
-#include<stdbool.h>
+#include <stdbool.h>
 #include <stdlib.h>
 
 void Readtext(char text[], int size)
@@ -66,7 +66,6 @@ void displaymenu()
     printf("\n======================================================");
 }
 
-
 int main()
 {
     char code[10];
@@ -92,15 +91,26 @@ int main()
     char std_fileName[60];
     sprintf(std_fileName, "%s_%s.txt", name, id);
 
-    bool isAlrRegistered;
+    int sem = 0;
     int returnFile = stdFileExists(std_fileName);
+
     if (returnFile == 0)
     {
         printf("\n[+] NEW STUDENT PROFILE CREATED SUCCESSFULLY!");
         printf("\n[+] Welcome, %s!", name);
-        isAlrRegistered = false;
-        createStudentFile(std_fileName, name, id);
 
+        do
+        {
+            printf("\nEnter Your Semester (1-8): ");
+            scanf(" %d", &sem);
+
+            if (sem <= 0 || sem > 8)
+            {
+                printf("\nInvalid Semester Input[!]");
+            }
+        } while (sem <= 0 || sem > 8);
+
+        createStudentFile(std_fileName, name, id, sem);
     }
     else
     {
@@ -109,33 +119,17 @@ int main()
         printf("\n------------------------------------------------------");
         printf("\n             YOUR REGISTERED COURSES");
         printf("\n------------------------------------------------------\n\n");
-        isAlrRegistered = true;
         readRegisteredCourses(std_fileName);
-    }
 
-    int sem;
-    if(isAlrRegistered == false) {
-        do
-        {
-            printf("\nEnter Your Semester (1-8): ");
-            scanf(" %d", &sem);
-
-            if (sem <= 0 || sem > 8)
-            {
-                printf("\nInvalid Semester Input[!], Enter Again Correct Semester Number: ");
-            }
-        } while (sem <= 0 || sem > 8);
-    } else {
         FILE *fp = fopen(std_fileName, "r");
-
-        char temp[100];
-
+        if (fp == NULL)
+        {
+            printf("\nError opening your file.\n");
+            return 1;
+        }
         fscanf(fp, "%*[^|]|%*[^|]|%d", &sem);
-
         fclose(fp);
     }
-   
-
 
     Course semesterCourses[MAX_COURSES];
     char courseFile[30];
