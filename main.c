@@ -2,6 +2,7 @@
 #include "common.h"
 #include <string.h>
 #include <ctype.h>
+#include<stdbool.h>
 #include <stdlib.h>
 
 void Readtext(char text[], int size)
@@ -53,58 +54,89 @@ int isValid(char text[])
 
 void displaymenu()
 {
-    printf("\n#####################################################");
-    printf("\n\tCOURSE REGISTRATION AND TIMETABLE MENU");
-    printf("\n#####################################################");
+    printf("\n\n======================================================");
+    printf("\n                  STUDENT DASHBOARD");
+    printf("\n======================================================");
 
-    printf("\n 1. Display Semester Available Courses");
-    printf("\n 2. Register a new Course");
-    printf("\n 3. View TimeTable");
-    printf("\n 4. Exit");
+    printf("\n  [1] Display Available Courses");
+    printf("\n  [2] Register a New Course");
+    printf("\n  [3] View Personal Timetable");
+    printf("\n  [4] Exit Portal");
+
+    printf("\n======================================================");
 }
+
 
 int main()
 {
     char code[10];
-    printf("NAME: ");
+    printf("\n======================================================");
+    printf("\n       UNIVERSITY COURSE REGISTRATION SYSTEM");
+    printf("\n======================================================");
+    printf("\n                  STUDENT PORTAL");
+    printf("\n======================================================");
+
+    printf("\n\n---------------- STUDENT INFORMATION ----------------");
+    printf("\nNAME: ");
     char name[50];
     Readtext(name, sizeof(name));
     upperCase(name);
     char id[20];
     do
     {
-        printf("STUDENT ID: ");
+        printf("\nSTUDENT ID: ");
         Readtext(id, sizeof(id));
         upperCase(id);
     } while (isValid(id) == 0);
 
-    int sem;
-
-    do
-    {
-        printf("Semester(1-8): ");
-        scanf(" %d", &sem);
-
-        if (sem <= 0 || sem > 8)
-        {
-            printf("\nInvalid Semester Input[!], Enter Again Correct Semester Number: ");
-        }
-    } while (sem <= 0 || sem > 8);
-
     char std_fileName[60];
     sprintf(std_fileName, "%s_%s.txt", name, id);
 
+    bool isAlrRegistered;
     int returnFile = stdFileExists(std_fileName);
     if (returnFile == 0)
     {
-        printf("Welcome %s! A new file has been created for you!\n", name);
-        createStudentFile(std_fileName, name, id, sem);
+        printf("\n[+] NEW STUDENT PROFILE CREATED SUCCESSFULLY!");
+        printf("\n[+] Welcome, %s!", name);
+        isAlrRegistered = false;
+        createStudentFile(std_fileName, name, id);
+
     }
     else
     {
-        printf("Welcome back %s!\n", name);
+        printf("\n[+] WELCOME BACK, %s!", name);
+        printf("\n[+] Existing Student Record Found.");
+        printf("\n------------------------------------------------------");
+        printf("\n             YOUR REGISTERED COURSES");
+        printf("\n------------------------------------------------------\n\n");
+        isAlrRegistered = true;
         readRegisteredCourses(std_fileName);
     }
+
+    int sem;
+    if(isAlrRegistered == false) {
+        do
+        {
+            printf("\nEnter Your Semester (1-8): ");
+            scanf(" %d", &sem);
+
+            if (sem <= 0 || sem > 8)
+            {
+                printf("\nInvalid Semester Input[!], Enter Again Correct Semester Number: ");
+            }
+        } while (sem <= 0 || sem > 8);
+    } else {
+        FILE *fp = fopen(std_fileName, "r");
+
+        char temp[100];
+
+        fscanf(fp, "%*[^|]|%*[^|]|%d", &sem);
+
+        fclose(fp);
+    }
+   
+
+
     Course semesterCourses[MAX_COURSES];
     char courseFile[30];
     sprintf(courseFile, "semester%dcourses.txt", sem);
@@ -152,7 +184,7 @@ int main()
                 while (registerCourseCount < MAX_REGISTERED_COURSES)
                 {
                     displayCourses(semesterCourses);
-                    printf("\nEnter Course code(0 to exit): ");
+                    printf("\nEnter Course Code (0 to exit): ");
                     scanf(" %9s", code);
                     if (strcmp(code, "0") == 0)
                     {
@@ -169,7 +201,11 @@ int main()
             break;
 
         case 4:
-            printf("\nExiting The program");
+            printf("\n\n======================================================");
+            printf("\n             THANK YOU FOR USING OUR PORTAL");
+            printf("\n======================================================");
+            printf("\n                  SESSION ENDED");
+            printf("\n======================================================\n");
             return 0;
             break;
         default:
@@ -177,12 +213,6 @@ int main()
             break;
         }
     }
-    // display menu
-    // input user(1.display courses/2. register course /3. view timwetable/ 4. exit)
-    // switch case for display courses
-    // display menu again
-    // register courses store it in array
-    // timeta
 
     return 0;
 }
